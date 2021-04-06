@@ -24,10 +24,10 @@ public class TesteUsuario {
 
     private static void testeIncluir() {
         Usuario u = new Usuario();
-        u.setNome("Sebastião");
-        u.setEmail("tiao@gmail.com");
+        u.setNome("Sebastião2");
+        u.setEmail("tiao2@gmail.com");
         Cidade c = new Cidade();
-        c.setNome("FIRMINOPOLIS");
+        c.setNome("FIRMINOPOLIS2");
         c.setUf("GO");
         u.setCidade(c);        
         new UsuarioDao().salvar(u);
