@@ -24,7 +24,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Cidade.findByNome",
             query = "SELECT c FROM Cidade c WHERE c.nome LIKE :nome"),
     @NamedQuery(name = "Cidade.findByUf",
-            query = "SELECT c FROM Cidade c WHERE c.uf LIKE :uf")
+            query = "SELECT c FROM Cidade c WHERE c.uf LIKE :uf"),
+    @NamedQuery(name = "Cidade.findAll",
+            query = "SELECT c FROM Cidade C ORDER BY c.nome")
 })
 public class Cidade implements Serializable {
     

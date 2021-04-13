@@ -62,6 +62,16 @@ public class CidadeDao {
         finalizarConexaoBD();
     }
 
+    public List<Cidade> pesquisarAll() {
+        iniciarConexaoBD();
+        List<Cidade> lstCidade;
+        Query consulta = entityManager.createNamedQuery("Cidade.findAll");
+        lstCidade = consulta.getResultList();
+        finalizarConexaoBD();
+        return lstCidade;
+    }
+    
+    
     public Cidade pesquisar(Long id) {
         iniciarConexaoBD();
         Cidade cidade = (Cidade) entityManager.find(Cidade.class, id);
