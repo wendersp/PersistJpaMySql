@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>PersistJpaMySql - Pesquisar Cidade</title>
+    </h:head>
+    <div>
+        <h:form>
+            <h:commandLink value="Home" action="home" />
+            <h:commandLink value="Novo" action="#{cidadeMBean.novo()}"/>
+        </h:form>
+    </div>
+    <div>
+        <h1>Pesquisar Cidade</h1>
+    </div>
+    <hr/>               
+    <div>
+        <h:form id="frmPesquisar">
+            <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
+            <h:inputText value="#{cidadeMBean.nomePesquisar}" id="iTxtPesquisarNome" size="50"/>                
+            <h:commandButton value="Pesquisar" action="#{cidadeMBean.pesquisar()}"/>
+        </h:form>
+    </div>
+    <hr/>
+    <div>       
+        <h:form>
+        <h:dataTable id="dTbCidade" value="#{cidadeMBean.listCidades}" var="cidade">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputLabel value="#{cidade.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputLabel value="#{cidade.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">U.F.</f:facet>
+                <h:outputLabel value="#{cidade.uf}"/>
+            </h:column>         
+            <h:column>
+                <f:facet name="header">Ações</f:facet>
+                <h:commandButton value="Editar" action="#{cidadeMBean.editar()}">
+                    <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
+                </h:commandButton>
+                <h:commandButton value="Apagar" action="#{cidadeMBean.excluir()}"> 
+                    <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>  
+        </h:form>
+    </div>        
+
+</html>
+

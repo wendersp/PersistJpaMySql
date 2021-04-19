@@ -28,19 +28,37 @@ public class UsuarioMBean implements Serializable {
     private CidadeDao cidadeDao = new CidadeDao();
     
    
-    public UsuarioMBean() {
-        usuario = new Usuario();
-        carregarListCidade();
-        listUsuarios = new UsuarioDao().pesquisar("");
-        
+    public UsuarioMBean() {                
+        listUsuarios = new UsuarioDao().pesquisar("");        
     }
     
-    public void salvar() {        
-        usuarioDao.salvar(usuario);
-        usuario = new Usuario();
+    
+    private String abrirFrm() {
         carregarListCidade();
+        return "usuarioFrm";
+    }
+    
+    public String novo() {
+        usuario = new Usuario();
+        carregarListCidade();        
+        return this.abrirFrm();
+    }
+    
+    public String salvar() {        
+        usuarioDao.salvar(usuario);
+        usuario = new Usuario();        
+        return "usuarioCons";
     }
 
+    public String editar() {        
+        return this.abrirFrm();
+    }
+    
+    public void excluir() {
+        usuarioDao.excluir(usuario);   
+        listUsuarios = new UsuarioDao().pesquisar("");     
+    }
+    
     public void pesquisarPorNome() {
         if (usuarioDao ==  null) {
             usuarioDao = new UsuarioDao();

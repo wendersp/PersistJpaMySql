@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.wpsistemas.persistjpamysql.model.entidades;
-
-
 
 import java.io.Serializable;
 import javax.persistence.CascadeType;
@@ -39,7 +32,7 @@ public class Usuario implements Serializable{
     private String nome;
     @Column(name = "email", length = 50)
     private String email;
-    @ManyToOne(cascade = CascadeType.PERSIST )
+    @ManyToOne
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
@@ -61,7 +54,7 @@ public class Usuario implements Serializable{
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     public String getEmail() {
@@ -69,7 +62,7 @@ public class Usuario implements Serializable{
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.toLowerCase();
     }
 
     public Cidade getCidade() {

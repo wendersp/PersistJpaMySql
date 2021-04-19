@@ -37,7 +37,7 @@ public class Cidade implements Serializable {
     private String nome;
     @Column(name = "uf", length = 2)
     private String uf;        
-    @OneToMany(mappedBy = "cidade",  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cidade")
     List<Usuario> listUsuarios;
 
     public Cidade() {
@@ -67,7 +67,7 @@ public class Cidade implements Serializable {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     public String getUf() {
@@ -75,7 +75,7 @@ public class Cidade implements Serializable {
     }
 
     public void setUf(String uf) {
-        this.uf = uf;
+        this.uf = uf.toUpperCase();
     }
 
     public List<Usuario> getListUsuarios() {

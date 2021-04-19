@@ -48,9 +48,7 @@ public class CidadeDao {
     }
 
     public void excluir(Cidade cidade) {
-        iniciarConexaoBD();
-        entityManager.remove(entityManager.find(Cidade.class, cidade.getId()));
-        finalizarConexaoBD();
+        this.excluir(cidade.getId());
     }
 
     public void excluir(Long id) {
@@ -83,7 +81,7 @@ public class CidadeDao {
         iniciarConexaoBD();
         List<Cidade> lstCidade;
         Query consulta = entityManager.createNamedQuery("Cidade.findByNome");
-        consulta.setParameter("nome", nome + "%");
+        consulta.setParameter("nome", nome.toUpperCase() + "%");
         lstCidade = consulta.getResultList();
         finalizarConexaoBD();
         return lstCidade;

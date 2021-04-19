@@ -6,43 +6,55 @@
     <h:head>
         <title>PersistJpaMySql - Pesquisar Usuarioe</title>
     </h:head>
-    <h:body>        
-        <div>
-            <h1>Pesquisar Usuario</h1>
-        </div>
-        <hr/>
-        <div>
-            <h:form id="frmPesquisar">
-                <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
-                <h:inputText value="#{usuarioMBean.nomePesquisar}" id="iTxtPesquisarNome" size="50"/>                
-                <h:commandButton value="Pesquisar" action="#{usuarioMBean.pesquisarPorNome()}"/>
-            </h:form>
-        </div>
-        <hr/>
-        <div>            
-            <h:dataTable id="dTbUsuairos" value="#{usuarioMBean.listUsuarios}" var="usuario">
-                <h:column>
-                    <f:facet name="header">Id</f:facet>
-                    <h:outputLabel value="#{usuario.id}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Nome</f:facet>
-                    <h:outputLabel value="#{usuario.nome}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">E-mail</f:facet>
-                    <h:outputLabel value="#{usuario.email}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Cidade</f:facet>
-                    <h:outputLabel value="#{usuario.cidade.nome}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Ações</f:facet>
-                    Editar/Excluir
-                </h:column>
-            </h:dataTable>            
-        </div>        
-    </h:body>
+    <div>
+        <h:form>
+            <h:commandLink value="Home" action="home" />
+            <h:commandLink value="Novo" action="#{usuarioMBean.novo()}"/>
+        </h:form>
+    </div>
+    <div>
+        <h1>Pesquisar Usuario</h1>
+    </div>
+    <hr/>               
+    <div>
+        <h:form id="frmPesquisar">
+            <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
+            <h:inputText value="#{usuarioMBean.nomePesquisar}" id="iTxtPesquisarNome" size="50"/>                
+            <h:commandButton value="Pesquisar" action="#{usuarioMBean.pesquisarPorNome()}"/>
+        </h:form>
+    </div>
+    <hr/>
+    <div>       
+        <h:form>
+        <h:dataTable id="dTbUsuairos" value="#{usuarioMBean.listUsuarios}" var="usuario">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputLabel value="#{usuario.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputLabel value="#{usuario.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">E-mail</f:facet>
+                <h:outputLabel value="#{usuario.email}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Cidade</f:facet>
+                <h:outputLabel value="#{usuario.cidade.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Ações</f:facet>
+                <h:commandButton value="Editar" action="#{usuarioMBean.editar()}">
+                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioMBean.usuario}"/>
+                </h:commandButton>
+                <h:commandButton value="Apagar" action="#{usuarioMBean.excluir()}"> 
+                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioMBean.usuario}"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>  
+        </h:form>
+    </div>        
+
 </html>
 
