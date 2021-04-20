@@ -1,60 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>PersistJpaMySql - Pesquisar Usuarioe</title>
-    </h:head>
-    <div>
-        <h:form>
-            <h:commandLink value="Home" action="home" />
-            <h:commandLink value="Novo" action="#{usuarioMBean.novo()}"/>
-        </h:form>
-    </div>
-    <div>
-        <h1>Pesquisar Usuario</h1>
-    </div>
-    <hr/>               
-    <div>
-        <h:form id="frmPesquisar">
-            <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
-            <h:inputText value="#{usuarioMBean.nomePesquisar}" id="iTxtPesquisarNome" size="50"/>                
-            <h:commandButton value="Pesquisar" action="#{usuarioMBean.pesquisarPorNome()}"/>
-        </h:form>
-    </div>
-    <hr/>
-    <div>       
-        <h:form>
-        <h:dataTable id="dTbUsuairos" value="#{usuarioMBean.listUsuarios}" var="usuario">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                <h:outputLabel value="#{usuario.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nome</f:facet>
-                <h:outputLabel value="#{usuario.nome}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">E-mail</f:facet>
-                <h:outputLabel value="#{usuario.email}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Cidade</f:facet>
-                <h:outputLabel value="#{usuario.cidade.nome}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Ações</f:facet>
-                <h:commandButton value="Editar" action="#{usuarioMBean.editar()}">
-                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioMBean.usuario}"/>
-                </h:commandButton>
-                <h:commandButton value="Apagar" action="#{usuarioMBean.excluir()}"> 
-                    <f:setPropertyActionListener value="#{usuario}" target="#{usuarioMBean.usuario}"/>
-                </h:commandButton>
-            </h:column>
-        </h:dataTable>  
-        </h:form>
-    </div>        
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../layout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-</html>
+    <ui:define name="content">
+        <div>
+            <h:form>
+                <h:commandLink value="Home" class="fixed-bottom" action="home" />
+                <h:commandLink value="Novo" action="#{usuarioMBean.novo()}"/>
+            </h:form>
+        </div>
+        <div>
+            <h1>Pesquisar Usuario</h1>
+        </div>
+        <hr/>               
+        <div>
+            <h:form id="frmPesquisar">
+                <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
+                <h:inputText value="#{usuarioMBean.nomePesquisar}" id="iTxtPesquisarNome" size="50"/>                
+                <h:commandButton value="Pesquisar" action="#{usuarioMBean.pesquisarPorNome()}"/>
+            </h:form>
+        </div>
+        <hr/>
+        <div>       
+            <h:form>
+                <h:dataTable id="dTbUsuairos" value="#{usuarioMBean.listUsuarios}" var="usuario"
+                              styleClass="tabela"
+                              headerClass="tabelaCabecalho"
+                              columnClasses="tabelaColunaId, tabelaColuna250px, tabelaColuna250px, tabelaColuna250px, tabelaColunaAcoes"
+                              rowClasses="tabelaLinha1,tabelaLinha2">
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        <h:outputLabel value="#{usuario.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Nome</f:facet>
+                        <h:outputLabel value="#{usuario.nome}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">E-mail</f:facet>
+                        <h:outputLabel value="#{usuario.email}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Cidade</f:facet>
+                        <h:outputLabel value="#{usuario.cidade.nome}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Ações</f:facet>
+                        <h:commandButton value="Editar" action="#{usuarioMBean.editar()}">
+                            <f:setPropertyActionListener value="#{usuario}" target="#{usuarioMBean.usuario}"/>
+                        </h:commandButton>
+                        <h:commandButton value="Apagar" action="#{usuarioMBean.excluir()}"> 
+                            <f:setPropertyActionListener value="#{usuario}" target="#{usuarioMBean.usuario}"/>
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>  
+            </h:form>
+        </div>        
+    </ui:define>
 
+</ui:composition>
