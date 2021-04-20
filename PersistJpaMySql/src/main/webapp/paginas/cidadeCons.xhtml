@@ -9,8 +9,8 @@
     <ui:define name="content">
         <div>
             <h:form>
-                <h:commandLink value="Home" action="home" />
-                <h:commandLink value="Novo" action="#{cidadeMBean.novo()}"/>
+                <h:commandLink value="Home" class="btn btn-primary" action="home" />
+                <h:commandLink value="Novo" class="btn btn-secondary" action="#{cidadeMBean.novo()}"/>
             </h:form>
         </div>
         <div>
@@ -21,7 +21,7 @@
             <h:form id="frmPesquisar">
                 <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
                 <h:inputText value="#{cidadeMBean.nomePesquisar}" id="iTxtPesquisarNome" size="50"/>                
-                <h:commandButton value="Pesquisar" action="#{cidadeMBean.pesquisar()}"/>
+                <h:commandButton value="Pesquisar"  action="#{cidadeMBean.pesquisar()}"/>
             </h:form>
         </div>
         <hr/>
