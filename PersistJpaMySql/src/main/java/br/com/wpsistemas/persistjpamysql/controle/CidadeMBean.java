@@ -34,18 +34,18 @@ public class CidadeMBean implements Serializable {
     
     public String novo() {
         cidade = new Cidade();        
-        return "cidadeFrm";
+        return "cidadeFrm?faces-redirect=true";
     }
     
     public String salvar() {
         carregarDao();
         cidadeDao.salvar(cidade);
         cidade = null;
-        return "cidadeCons";
+        return "cidadeCons?faces-redirect=true";
     }
     
     public String editar() {        
-        return "cidadeFrm";
+        return "cidadeFrm?faces-redirect=true";
     }
     
     public void excluir() {

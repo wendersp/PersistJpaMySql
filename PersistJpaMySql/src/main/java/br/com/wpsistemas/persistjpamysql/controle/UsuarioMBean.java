@@ -1,6 +1,7 @@
 
 package br.com.wpsistemas.persistjpamysql.controle;
 
+import br.com.wpsistemas.persistjpamysql.controle.uteis.FacesUtil;
 import br.com.wpsistemas.persistjpamysql.model.dao.CidadeDao;
 import br.com.wpsistemas.persistjpamysql.model.dao.UsuarioDao;
 import br.com.wpsistemas.persistjpamysql.model.entidades.Cidade;
@@ -35,7 +36,7 @@ public class UsuarioMBean implements Serializable {
     
     private String abrirFrm() {
         carregarListCidade();
-        return "usuarioFrm";
+        return "usuarioFrm?faces-redirect=true";
     }
     
     public String novo() {
@@ -46,8 +47,9 @@ public class UsuarioMBean implements Serializable {
     
     public String salvar() {        
         usuarioDao.salvar(usuario);
-        usuario = new Usuario();        
-        return "usuarioCons";
+        usuario = new Usuario();      
+        FacesUtil.addInfoMensage("Usuario salvo com sucesso...");
+        return "usuarioCons?faces-redirect=true";
     }
 
     public String editar() {        
@@ -56,7 +58,8 @@ public class UsuarioMBean implements Serializable {
     
     public void excluir() {
         usuarioDao.excluir(usuario);   
-        listUsuarios = new UsuarioDao().pesquisar("");     
+        listUsuarios = new UsuarioDao().pesquisar("");  
+        FacesUtil.addInfoMensage("Usuario removido com sucesso...");
     }
     
     public void pesquisarPorNome() {

@@ -12,18 +12,21 @@
         </div>
         <hr/>
         <div>
+            <h:messages id="msg"/>
+        </div>
+        <div>
             <h:form>
-                <h:commandLink value="Voltar" action="cidadeCons" />
+                <h:commandButton value="Voltar" action="cidadeCons" />
             </h:form>
         </div>
         <hr/>
         <div>
             <h:form id="frmCidade">
                 <h:outputLabel  value="Nome:" for="iTxtNome"/> 
-                <h:inputText value="#{cidadeMBean.cidade.nome}" id="iTxtNome" maxlength="100" size="100"/><br/><br/>
+                <h:inputText value="#{cidadeMBean.cidade.nome}" id="iTxtNome" maxlength="100" size="100"/><br/>
                 <h:outputLabel value="U.F.:" for="iTxtUf"/>
-                <h:inputText value="#{cidadeMBean.cidade.uf}" id="iTxtUf" maxlength="2" size="2" /><br/><br/>                
-                <br/><br/>
+                <h:inputText value="#{cidadeMBean.cidade.uf}" id="iTxtUf" maxlength="2" size="2" /><br/>              
+                <br/>
                 <h:commandButton id="cBtnSalvar" value="Salvar" action="#{cidadeMBean.salvar()}"/>
             </h:form>            
         </div>        

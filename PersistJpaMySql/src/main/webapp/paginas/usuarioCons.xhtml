@@ -8,15 +8,17 @@
 
     <ui:define name="content">
         <div>
-            <h:form>
-                <h:commandLink value="Home" class="btn btn-primary" action="home" />
-                <h:commandLink value="Novo" class="btn btn-secondary" action="#{usuarioMBean.novo()}"/>
-            </h:form>
-        </div>
-        <div>
             <h1>Pesquisar Usuario</h1>
         </div>
-        <hr/>               
+        <div>
+           <h:messages infoClass="info" warnClass="warn" errorClass="erro" fatalClass="fatal" />
+        </div>
+        <div>
+            <h:form>                
+                <h:commandButton value="Novo" action="#{usuarioMBean.novo()}"/>
+            </h:form>
+        </div>
+        <br/>        
         <div>
             <h:form id="frmPesquisar">
                 <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
@@ -24,14 +26,14 @@
                 <h:commandButton value="Pesquisar" action="#{usuarioMBean.pesquisarPorNome()}"/>
             </h:form>
         </div>
-        <hr/>
+
         <div>       
             <h:form>
                 <h:dataTable id="dTbUsuairos" value="#{usuarioMBean.listUsuarios}" var="usuario"
-                              styleClass="tabela"
-                              headerClass="tabelaCabecalho"
-                              columnClasses="tabelaColunaId, tabelaColuna250px, tabelaColuna250px, tabelaColuna250px, tabelaColunaAcoes"
-                              rowClasses="tabelaLinha1,tabelaLinha2">
+                             styleClass="tabela"
+                             headerClass="tabelaCabecalho"
+                             columnClasses="tabelaColunaId, tabelaColuna250px, tabelaColuna250px, tabelaColuna250px, tabelaColunaAcoes"
+                             rowClasses="tabelaLinha1,tabelaLinha2">
                     <h:column>
                         <f:facet name="header">Id</f:facet>
                         <h:outputLabel value="#{usuario.id}"/>

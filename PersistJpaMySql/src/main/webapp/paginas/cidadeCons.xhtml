@@ -8,15 +8,15 @@
 
     <ui:define name="content">
         <div>
-            <h:form>
-                <h:commandLink value="Home" class="btn btn-primary" action="home" />
-                <h:commandLink value="Novo" class="btn btn-secondary" action="#{cidadeMBean.novo()}"/>
-            </h:form>
-        </div>
-        <div>
             <h1>Pesquisar Cidade</h1>
         </div>
-        <hr/>               
+        <br/>
+        <div>
+            <h:form>                
+                <h:commandButton value="Novo" action="#{cidadeMBean.novo()}"/>
+            </h:form>
+        </div>        
+        <br/>
         <div>
             <h:form id="frmPesquisar">
                 <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
@@ -24,7 +24,7 @@
                 <h:commandButton value="Pesquisar"  action="#{cidadeMBean.pesquisar()}"/>
             </h:form>
         </div>
-        <hr/>
+               
         <div>       
             <h:form>
                 <h:dataTable id="dTbCidade" value="#{cidadeMBean.listCidades}" var="cidade"

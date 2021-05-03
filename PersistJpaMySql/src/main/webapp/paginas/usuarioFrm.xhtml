@@ -10,26 +10,26 @@
         
         <div>
             <h1>Cadastro de Usuario</h1>
-        </div>
-        <hr/>
+        </div>        
+        <br/>
         <div>
             <h:form>
-                <h:commandLink value="Voltar" action="usuarioCons" />
+                <h:commandButton value="Voltar" action="usuarioCons" />
             </h:form>
         </div>
-        <hr/>
+        <br/>
         <div>
             <h:form id="frmUsuario">
                 <h:outputLabel  value="Nome:" for="iTxtNome"/> 
-                <h:inputText value="#{usuarioMBean.usuario.nome}" id="iTxtNome" maxlength="100" size="100"/><br/><br/>
+                <h:inputText value="#{usuarioMBean.usuario.nome}" id="iTxtNome" maxlength="100" size="100"/><br/>
                 <h:outputLabel value="E-mail:" for="iTxtEmail"/>
-                <h:inputText value="#{usuarioMBean.usuario.email}" id="iTxtEmail" maxlength="50" size="50" /><br/><br/>
+                <h:inputText value="#{usuarioMBean.usuario.email}" id="iTxtEmail" maxlength="50" size="50" /><br/>
                 <h:outputLabel value="Cidade:" for="slMnCidade"/>
                 <h:selectOneMenu value="#{usuarioMBean.usuario.cidade}" converter="cidadeConverter" id="slMnCidade" >
                     <f:selectItems value="#{usuarioMBean.listCidades}" var="cidade"
                                    itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>                    
                 </h:selectOneMenu>
-                <br/><br/>
+                <br/>
                 <h:commandButton id="cBtnSalvar" value="Salvar" action="#{usuarioMBean.salvar()}"/>
             </h:form>            
         </div>        
