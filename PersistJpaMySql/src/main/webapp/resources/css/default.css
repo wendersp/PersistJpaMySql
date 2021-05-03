@@ -8,7 +8,7 @@ body {
 
 h1 {
     font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    //border-bottom: 1px solid #AFAFAF;
+/*    border-bottom: 1px solid #AFAFAF;*/
     font-size:  16px;
     font-weight: bold;
     margin: 0px;
@@ -17,15 +17,15 @@ h1 {
 }
 
 a:link, a:visited {
-  color: #045491;
-  font-weight : bold;
-  text-decoration: none;
+    color: #045491;
+    font-weight : bold;
+    text-decoration: none;
 }
 
 a:link:hover, a:visited:hover  {
-  color: #045491;
-  font-weight : bold;
-  text-decoration : underline;
+    color: #045491;
+    font-weight : bold;
+    text-decoration : underline;
 }
 
 .tabela {
@@ -76,11 +76,11 @@ a:link:hover, a:visited:hover  {
 }
 
 .erro{
-   color: red;
+    color: red;
 }
 
 .info{
-   color: blue;
+    color: blue;
 }
 
 .warn {

@@ -10,6 +10,8 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -48,7 +50,7 @@ public class UsuarioMBean implements Serializable {
     public String salvar() {        
         usuarioDao.salvar(usuario);
         usuario = new Usuario();      
-        FacesUtil.addInfoMensage("Usuario salvo com sucesso...");
+        FacesUtil.addInfoMensage("Usuario salvo com sucesso...");        
         return "usuarioCons?faces-redirect=true";
     }
 

@@ -12,22 +12,18 @@ import javax.servlet.http.HttpSession;
  */
 public class FacesUtil implements Serializable {
 
-    public static void addErrorMessage(String message) {
+    public static void addErrorMessage(String message) {        
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message));
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message));        
         /*Faz com que a mensgam sobreviva ao redirecionamento*/
-        FacesContext.getCurrentInstance()
-                .getExternalContext()
-                .getFlash().setKeepMessages(true);
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
     }
 
-    public static void addInfoMensage(String msg) {
-        FacesMessage fmsg = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg);
-        FacesContext.getCurrentInstance().addMessage(null, fmsg);
+    public static void addInfoMensage(String message) {
+        FacesMessage fmsg = new FacesMessage(FacesMessage.SEVERITY_INFO, message, message);
+        FacesContext.getCurrentInstance().addMessage(null, fmsg);        
         /*Faz com que a mensgam sobreviva ao redirecionamento*/
-        FacesContext.getCurrentInstance()
-                .getExternalContext()
-                .getFlash().setKeepMessages(true);
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
     }
 
     public static void setObjetoSession(String paramento, Object objeto) {
