@@ -7,16 +7,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <div id="dvLogin">
-           
+        <div>
+            <h:messages/>
+            
+        </div>
+        <div id="dvLogin">           
                 <h:form>
                     <h:panelGrid columns="2">
-                        Usuario:
-                        <h:inputText id="iTxtUsuario" size="20" value=""/>
+                        E-mail:
+                        <h:inputText id="iTxtEmail" size="20" value="#{loginMbean.email}"/>
                         Senha:
-                        <h:inputSecret id="iSSenha" size="20" value=""/>
+                        <h:inputSecret id="iSSenha" size="20" value="#{loginMbean.senha}"/>
                     </h:panelGrid>
-                    <h:commandButton id="cBtnEntrar" value="Entrar"/>
+                    <h:commandButton id="cBtnEntrar" value="Entrar" action="#{loginMbean.logar()}"/>
                 </h:form>
         </div>
     </body>

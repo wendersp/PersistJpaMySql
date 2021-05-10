@@ -34,7 +34,6 @@ public class UsuarioDao {
     public void salvar(Usuario usuario) {
         iniciarConexaoBD();
         entityManager.getTransaction().begin();
-        System.out.println("Salvando a usuario.");
         if (usuario.getId() == null) {
             //Insert
             entityManager.persist(usuario);
@@ -43,8 +42,7 @@ public class UsuarioDao {
             entityManager.merge(usuario);
         }
         entityManager.getTransaction().commit();
-        finalizarConexaoBD();
-        System.out.println("Usuario Salvo com sucesso...");
+        finalizarConexaoBD();        
     }
 
     //remover

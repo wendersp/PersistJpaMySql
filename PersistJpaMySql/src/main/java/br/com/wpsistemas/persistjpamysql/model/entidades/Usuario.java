@@ -20,7 +20,10 @@ import javax.persistence.Table;
 @Table(name = "usuario", schema = "bd_prog2")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findByNome",
-            query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome")
+            query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome"),
+    @NamedQuery(name = "Usuario.login",
+            query = "SELECT u FROM Usuario u WHERE u.email = :email "
+                    + "AND u.senha = :senha")
 })
 public class Usuario implements Serializable{
     
@@ -31,6 +34,8 @@ public class Usuario implements Serializable{
     private String nome;
     @Column(name = "email", length = 50)
     private String email;
+    @Column(name = "senha", length = 10)
+    private String senha;
     @ManyToOne
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
@@ -64,6 +69,16 @@ public class Usuario implements Serializable{
         this.email = email.toLowerCase();
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    
+    
     public Cidade getCidade() {
         return cidade;
     }
