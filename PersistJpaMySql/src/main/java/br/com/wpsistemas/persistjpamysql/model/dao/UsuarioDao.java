@@ -11,24 +11,9 @@ import javax.persistence.Query;
  *
  * @author wender
  */
-public class UsuarioDao {
+public class UsuarioDao extends GenericDao {
 
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
-    
-    private void iniciarConexaoBD() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("PresistJpaMysqlUP");
-        entityManager = entityManagerFactory.createEntityManager();
-    }
-    
-    private void finalizarConexaoBD() {
-        if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
-            entityManagerFactory.close();
-        }
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-        }
-    }
+   
 
     /* Criar Novo e Altera */
     public void salvar(Usuario usuario) {

@@ -3,34 +3,14 @@ package br.com.wpsistemas.persistjpamysql.model.dao;
 
 import br.com.wpsistemas.persistjpamysql.model.entidades.Cidade;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /**
  *
  * @author wender
  */
-public class CidadeDao {
-
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
-
-    private void iniciarConexaoBD() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("PresistJpaMysqlUP");
-        entityManager = entityManagerFactory.createEntityManager();
-    }
-
-    private void finalizarConexaoBD() {
-        if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
-            entityManagerFactory.close();
-        }
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-        }
-    }
-
+public class CidadeDao extends GenericDao {
+    
     public void salvar(Cidade cidade) {
         iniciarConexaoBD();
 
