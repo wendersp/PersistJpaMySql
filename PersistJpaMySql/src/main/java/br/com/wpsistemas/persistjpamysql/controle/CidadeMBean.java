@@ -1,7 +1,9 @@
 package br.com.wpsistemas.persistjpamysql.controle;
 
 import br.com.wpsistemas.persistjpamysql.model.dao.CidadeDao;
+import br.com.wpsistemas.persistjpamysql.model.dao.EstadoDao;
 import br.com.wpsistemas.persistjpamysql.model.entidades.Cidade;
+import br.com.wpsistemas.persistjpamysql.model.entidades.Estado;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -16,10 +18,14 @@ import java.util.List;
 public class CidadeMBean implements Serializable {
 
     private List<Cidade> listCidades;
+    private List<Estado> listEstados;
     private Cidade cidade;
     private String nomePesquisar;
     
     private CidadeDao cidadeDao;
+    private EstadoDao estadoDao;
+    
+    
     
     
     public CidadeMBean() {
@@ -32,7 +38,16 @@ public class CidadeMBean implements Serializable {
         }
     }
     
+    private void carregarListaEstados() {
+        if (this.estadoDao == null) {
+            this.estadoDao = new EstadoDao();
+        }
+        this.listEstados = this.estadoDao.pesquisar("");
+                
+    }
+    
     public String novo() {
+        this.carregarListaEstados();
         cidade = new Cidade();        
         return "cidadeFrm?faces-redirect=true";
     }
@@ -44,7 +59,8 @@ public class CidadeMBean implements Serializable {
         return "cidadeCons?faces-redirect=true";
     }
     
-    public String editar() {        
+    public String editar() { 
+        this.carregarListaEstados();
         return "cidadeFrm?faces-redirect=true";
     }
     
@@ -87,6 +103,14 @@ public class CidadeMBean implements Serializable {
 
     public void setNomePesquisar(String nomePesquisar) {
         this.nomePesquisar = nomePesquisar;
+    }
+
+    public List<Estado> getListEstados() {
+        return listEstados;
+    }
+
+    public void setListEstados(List<Estado> listEstados) {
+        this.listEstados = listEstados;
     }
         
     

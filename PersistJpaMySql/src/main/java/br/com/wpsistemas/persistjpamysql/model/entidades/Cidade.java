@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -22,8 +24,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Cidade.findByNome",
             query = "SELECT c FROM Cidade c WHERE c.nome LIKE :nome"),
-    @NamedQuery(name = "Cidade.findByUf",
-            query = "SELECT c FROM Cidade c WHERE c.uf LIKE :uf"),
+    
     @NamedQuery(name = "Cidade.findAll",
             query = "SELECT c FROM Cidade C ORDER BY c.nome")
 })
@@ -34,23 +35,26 @@ public class Cidade implements Serializable {
     private Long id;
     @Column(name = "nome", length = 100)
     private String nome;
-    @Column(name = "uf", length = 2)
-    private String uf;        
+    
+    @ManyToOne
+    @JoinColumn(name = "estado_id")
+    private Estado estado;       
+    
     @OneToMany(mappedBy = "cidade")
     List<Usuario> listUsuarios;
 
     public Cidade() {
     }
 
-    public Cidade(String nome, String uf) {
+    public Cidade(String nome, Estado estado) {
         this.nome = nome;
-        this.uf = uf;
+        this.estado = estado;
     }
 
-    public Cidade(Long id, String nome, String uf) {
+    public Cidade(Long id, String nome, Estado estado) {
         this.id = id;
         this.nome = nome;
-        this.uf = uf;
+        this.estado = estado;
     }
 
     public Long getId() {
@@ -69,13 +73,15 @@ public class Cidade implements Serializable {
         this.nome = nome.toUpperCase();
     }
 
-    public String getUf() {
-        return uf;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf.toUpperCase();
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
+
+    
 
     public List<Usuario> getListUsuarios() {
         return listUsuarios;
@@ -90,7 +96,7 @@ public class Cidade implements Serializable {
     
     @Override
     public String toString() {
-        return "Cidade{" + "id=" + id + ", nome=" + nome + ", uf=" + uf + '}';
+        return "Cidade{" + "id=" + id + ", nome=" + nome + ", uf=" + estado.getSigla() + '}';
     }
 
     @Override

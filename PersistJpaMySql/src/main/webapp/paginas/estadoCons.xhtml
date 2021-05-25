@@ -8,51 +8,51 @@
 
     <ui:define name="content">
         <div>
-            <h1>Pesquisar Cidade</h1>
+            <h1>Pesquisar Estado</h1>
         </div>
         <div>
            <h:messages infoClass="info" warnClass="warn" errorClass="erro" fatalClass="fatal" />
         </div>
         <div>
             <h:form>                
-                <h:commandButton value="Novo" action="#{cidadeMBean.novo()}"/>
+                <h:commandButton value="Novo" action="#{estadoMBean.novo()}"/>
             </h:form>
         </div>        
         <br/>
         <div>
             <h:form id="frmPesquisar">
                 <h:outputLabel value="Nome" for="iTxtPesquisarNome"/>
-                <h:inputText value="#{cidadeMBean.nomePesquisar}" id="iTxtPesquisarNome" size="50"/>                
-                <h:commandButton value="Pesquisar"  action="#{cidadeMBean.pesquisar()}"/>
+                <h:inputText value="#{estadoMBean.nomePesquisar}" id="iTxtPesquisarNome" size="50"/>                
+                <h:commandButton value="Pesquisar"  action="#{estadoMBean.pesquisar()}"/>
             </h:form>
         </div>
                
         <div>       
             <h:form>
-                <h:dataTable id="dTbCidade" value="#{cidadeMBean.listCidades}" var="cidade"
+                <h:dataTable id="dTbEstado" value="#{estadoMBean.listEstados}" var="estado"
                              styleClass="tabela"
                               headerClass="tabelaCabecalho"
                               columnClasses="tabelaColunaId, tabelaColuna250px, tabelaColuna100px, tabelaColunaAcoes"
                               rowClasses="tabelaLinha1,tabelaLinha2">
                     <h:column>
                         <f:facet name="header">Id</f:facet>
-                        <h:outputLabel value="#{cidade.id}"/>
+                        <h:outputLabel value="#{estado.id}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">Nome</f:facet>
-                        <h:outputLabel value="#{cidade.nome}"/>
+                        <h:outputLabel value="#{estado.nome}"/>
                     </h:column>
                     <h:column>
-                        <f:facet name="header">U.F.</f:facet>
-                        <h:outputLabel value="#{cidade.estado.sigla}"/>
+                        <f:facet name="header">Sigla</f:facet>
+                        <h:outputLabel value="#{estado.sigla}"/>
                     </h:column>         
                     <h:column>
                         <f:facet name="header">Ações</f:facet>
-                        <h:commandButton value="Editar" action="#{cidadeMBean.editar()}">
-                            <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
+                        <h:commandButton value="Editar" action="#{estadoMBean.editar()}">
+                            <f:setPropertyActionListener value="#{estado}" target="#{estadoMBean.estado}"/>
                         </h:commandButton>
-                        <h:commandButton value="Apagar" action="#{cidadeMBean.excluir()}"> 
-                            <f:setPropertyActionListener value="#{cidade}" target="#{cidadeMBean.cidade}"/>
+                        <h:commandButton value="Apagar" action="#{estadoMBean.excluir()}"> 
+                            <f:setPropertyActionListener value="#{estado}" target="#{estadoMBean.estado}"/>
                         </h:commandButton>
                     </h:column>
                 </h:dataTable>  

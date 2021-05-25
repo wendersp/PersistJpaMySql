@@ -35,7 +35,7 @@
                     <h:outputLabel value="Cidade:" for="slMnCidade"/>
                     <h:selectOneMenu value="#{usuarioMBean.usuario.cidade}" converter="cidadeConverter" id="slMnCidade" >
                         <f:selectItems value="#{usuarioMBean.listCidades}" var="cidade"
-                                       itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>                    
+                                       itemValue="#{cidade}" itemLabel="#{cidade.nome}-#{cidade.estado.sigla}"/>                    
                     </h:selectOneMenu>                
                     
                     <f:facet name = "footer">

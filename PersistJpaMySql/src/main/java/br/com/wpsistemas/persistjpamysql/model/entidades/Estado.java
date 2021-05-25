@@ -1,4 +1,3 @@
-
 package br.com.wpsistemas.persistjpamysql.model.entidades;
 
 import java.io.Serializable;
@@ -18,15 +17,17 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "estados", schema = "bd_prog2")
-@NamedQueries(
+@NamedQueries({
         @NamedQuery(name = "Estado.findByNome",
-                query = "SELECT e FROM Estado e WHERE e.nome LIKE :nome ORDER BY e.nome")
-)
+                query = "SELECT e FROM Estado e WHERE e.nome LIKE :nome ORDER BY e.nome"),
+        @NamedQuery(name = "Estado.findBySigla",
+                query = "SELECT e FROM Estado e WHERE e.sigla LIKE :sigla ORDER BY e.sigla")
+})
 public class Estado implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;    
+    private Long id;
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
     @Column(name = "sigla", length = 2, nullable = false)
@@ -80,5 +81,5 @@ public class Estado implements Serializable {
         }
         return true;
     }
-               
+
 }

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../layout.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <div>
+            <h1>Cadastro de Produto</h1>
+        </div>
+ 
+        <div>
+           <h:messages infoClass="info" warnClass="warn" errorClass="erro" fatalClass="fatal" />
+        </div>
+        <div>
+            <h:form>
+                <h:commandButton value="Voltar" action="#{produtoMBean.voltar()}" />
+            </h:form>
+        </div>
+        <br/>
+        <div>
+            <h:form id="frmProduto">
+                <h:panelGrid columns="2">
+                <h:outputLabel  value="Nome:" for="iTxtNome"/> 
+                <h:inputText value="#{produtoMBean.produto.nome}" id="iTxtNome" maxlength="100" size="100"/>
+                <h:outputLabel value="Preço Custo:" for="iTxtPrecoCusto"/>
+                <h:inputText value="#{produtoMBean.produto.precoCusto}" id="iTxtPrecoCusto" maxlength="10" size="10" />            
+                <h:outputLabel value="Margem Lucro(%):" for="iTxtMargemLucro"/>
+                <h:inputText value="#{produtoMBean.produto.margemLucro}" id="iTxtMargemLucro" maxlength="10" size="10" />            
+                <h:outputLabel value="Preço Venda:" for="iTxtPrecoVenda"/>
+                <h:inputText value="#{produtoMBean.produto.precoVenda}" id="iTxtPrecoVenda" readonly="true" maxlength="10" size="10" />            
+                </h:panelGrid>
+                <h:commandButton id="cBtnSalvar" value="Salvar" action="#{produtoMBean.salvar()}"/>
+            </h:form>            
+        </div>        
+ </ui:define>
+
+</ui:composition>
+

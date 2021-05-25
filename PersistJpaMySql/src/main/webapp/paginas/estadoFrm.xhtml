@@ -8,7 +8,7 @@
 
     <ui:define name="content">
         <div>
-            <h1>Cadastro de Cidade</h1>
+            <h1>Cadastro de Estado</h1>
         </div>
  
         <div>
@@ -16,25 +16,19 @@
         </div>
         <div>
             <h:form>
-                <h:commandButton value="Voltar" action="cidadeCons" />
+                <h:commandButton value="Voltar" action="#{estadoMBean.voltar()}" />
             </h:form>
         </div>
         <br/>
         <div>
-            <h:form id="frmCidade">
+            <h:form id="frmEstado">
                 <h:panelGrid columns="2">
                 <h:outputLabel  value="Nome:" for="iTxtNome"/> 
-                <h:inputText value="#{cidadeMBean.cidade.nome}" id="iTxtNome" maxlength="100" size="100"/>
-                <h:outputLabel value="Estado:" for="slMnEstado"/>
-                <h:selectOneMenu value="#{cidadeMBean.cidade.estado}" converter="estadoConverter" id="slMnEstado" >
-                    <f:selectItem  itemLabel="Selecione um Estado"/>
-                       <f:selectItems value="#{cidadeMBean.listEstados}" var="estado"
-                                       itemValue="#{estado}" itemLabel="#{estado.nome}"/>                    
-                    </h:selectOneMenu>   
-                
-                
+                <h:inputText value="#{estadoMBean.estado.nome}" id="iTxtNome" maxlength="100" size="100"/>
+                <h:outputLabel value="Sigla:" for="iTxtSigla"/>
+                <h:inputText value="#{estadoMBean.estado.sigla}" id="iTxtSigla" maxlength="2" size="2" />            
                 </h:panelGrid>
-                <h:commandButton id="cBtnSalvar" value="Salvar" action="#{cidadeMBean.salvar()}"/>
+                <h:commandButton id="cBtnSalvar" value="Salvar" action="#{estadoMBean.salvar()}"/>
             </h:form>            
         </div>        
  </ui:define>
